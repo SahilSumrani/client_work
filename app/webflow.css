@@ -3515,6 +3515,8 @@ blockquote {
     margin-bottom: 0;
     padding-top: 20px;
     line-height: 100%;
+    white-space: nowrap;
+    font-size: 14px;
 }
 
 .count-wrap {
@@ -3918,7 +3920,7 @@ blockquote {
 
 .faq-accordion-link {
     width: 100%;
-    padding: 0 0 32px;
+    padding: 0 0 44px;
     display: block;
     cursor: pointer;
 }
@@ -4270,8 +4272,8 @@ blockquote {
 }
 
 .footer-top {
-    grid-column-gap: 200px;
-    grid-row-gap: 200px;
+    grid-column-gap: 80px;
+    grid-row-gap: 80px;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
     grid-auto-columns: 1fr;
@@ -5646,7 +5648,7 @@ blockquote {
 .service-title {
     margin-top: var(--_sizes---space--space-16);
     font-family: var(--_font-family---heading-font);
-    color: var(--gray--300);
+    color: var(--dark--100);
     font-size: var(--_typography---h1--font-size);
     line-height: var(--_typography---h1--line-height);
     font-weight: var(--_typography---h1--font-weight);
@@ -7919,4 +7921,74 @@ blockquote {
 .accent-line.center {
     margin-left: auto;
     margin-right: auto;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Client-requested enhancements                                      */
+/* ------------------------------------------------------------------ */
+
+/* Footer: new Contact column reuses the existing .footer-contact grid. */
+.footer-contact-wrapper {
+    grid-row-gap: 24px;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+}
+
+.footer-contact .footer-link {
+    line-height: 1.5;
+}
+
+/* Dual-action CTA links (Email / WhatsApp) replacing the single
+   "Ask Some Question" button. */
+.cta-cta-links,
+.faq-cta-links {
+    display: flex;
+    flex-flow: row wrap;
+    grid-column-gap: 16px;
+    grid-row-gap: 16px;
+    align-items: center;
+}
+
+.faq-cta-links {
+    margin-top: 8px;
+}
+
+/* Contact hero tagline box — more breathing room, not flush to the edge. */
+.contact-banner-tagline {
+    max-width: 420px;
+    padding: 24px 28px;
+    border-radius: var(--_sizes---radius--radius-20);
+    background-color: rgba(3, 19, 45, 0.55);
+    backdrop-filter: blur(4px);
+    margin-top: 8px;
+}
+
+.contact-banner-tagline .section-content {
+    margin-bottom: 0;
+}
+
+/* Service page interactive micro-interactions. */
+.service-thumb {
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.service-thumb:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 30px rgba(3, 19, 45, 0.25);
+}
+
+.service-title {
+    transition: color .4s ease, letter-spacing .4s ease;
+}
+
+.service-title:hover {
+    color: var(--gold--accent);
+    letter-spacing: .5px;
+}
+
+/* Keep the hero badge on a single line at common desktop widths. */
+.count-wrap {
+    max-width: 320px;
 }

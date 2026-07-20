@@ -26,9 +26,7 @@ export default function About() {
       <div className="w-layout-blockcontainer container w-container">
         <div data-fade className="about-us-content">
           <div className="about-us-card-wrapper">
-            <div className="about-us-subtitle-wrapper">
-              <div className="about-us-subtitle">(About Us)</div>
-            </div>
+
             <div className="about-us-card-content">
               {CARDS.map((card) => (
                 <div key={card.title} className="about-us-card">

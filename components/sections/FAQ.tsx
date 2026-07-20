@@ -13,7 +13,7 @@ const FAQS: AccordionItem[] = [
   {
     question: "Do you provide maintenance guarantees?",
     answer:
-      "Yes. Our end-to-end Solar EPC services for both rooftop residential and industrial solar plants include 20 years of maintenance guarantees, covering ongoing operation & maintenance across the plant lifecycle.",
+      "Yes. Our end-to-end Solar EPC services include a 3-year maintenance guarantee, renewable for continued coverage beyond the initial period.",
   },
   {
     question: "What module technology do you use?",
@@ -46,11 +46,11 @@ export default function FAQ() {
                 Clear answers to the most common solar-related questions from homeowners, businesses, and facility operators.
               </p>
             </div>
-            <div className="faq-button-wrapper">
-              <a href="/contact" className="primary-button w-inline-block">
+            <div className="faq-button-wrapper faq-cta-links">
+              <a href="mailto:dyusolar@gmail.com" className="primary-button w-inline-block">
                 <div className="primary-button-text-wrapper">
-                  <div className="primary-button-text top">Ask Some Question</div>
-                  <div className="primary-button-text bottom">Ask Some Question</div>
+                  <div className="primary-button-text top">Email Us</div>
+                  <div className="primary-button-text bottom">Email Us</div>
                 </div>
                 <div className="primary-button-arrow-wrapper">
                   <Image
@@ -68,6 +68,9 @@ export default function FAQ() {
                     className="primary-button-arrow bottom"
                   />
                 </div>
+              </a>
+              <a href="https://wa.me/919899806844" target="_blank" rel="noreferrer" className="btn-secondary w-inline-block">
+                <div>WhatsApp Us</div>
               </a>
             </div>
           </div>

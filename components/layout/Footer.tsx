@@ -29,11 +29,11 @@ export default function Footer() {
                 mailing list for quarterly updates.
               </p>
             </div>
-            <div className="cta-button-wrapper">
-              <a href="/contact" className="primary-button w-inline-block">
+            <div className="cta-button-wrapper cta-cta-links">
+              <a href="mailto:dyusolar@gmail.com" className="primary-button w-inline-block">
                 <div className="primary-button-text-wrapper">
-                  <div className="primary-button-text top">Ask Some Question</div>
-                  <div className="primary-button-text bottom">Ask Some Question</div>
+                  <div className="primary-button-text top">Email Us</div>
+                  <div className="primary-button-text bottom">Email Us</div>
                 </div>
                 <div className="primary-button-arrow-wrapper">
                   <Image
@@ -51,6 +51,9 @@ export default function Footer() {
                     className="primary-button-arrow bottom"
                   />
                 </div>
+              </a>
+              <a href="https://wa.me/919899806844" target="_blank" rel="noreferrer" className="btn-secondary w-inline-block">
+                <div>WhatsApp Us</div>
               </a>
             </div>
           </div>
@@ -92,6 +95,25 @@ export default function Footer() {
                         </a>
                       </li>
                     ))}
+                  </ul>
+                </div>
+                <div className="footer-contact-wrapper">
+                  <div className="footer-menu-title-wrapper">
+                    <div className="footer-menu-title">Contact</div>
+                  </div>
+                  <ul role="list" className="footer-contact">
+                    <li>
+                      <a href="tel:+919899806844" className="footer-link">+91-9899806844</a>
+                    </li>
+                    <li>
+                      <a href="tel:+919310660216" className="footer-link">+91-9310660216</a>
+                    </li>
+                    <li>
+                      <a href="mailto:dyusolar@gmail.com" className="footer-link">dyusolar@gmail.com</a>
+                    </li>
+                    <li>
+                      <span className="footer-link">2740/1 Roshanpura Nai Sarak, Delhi-6 (Delhi 110006)</span>
+                    </li>
                   </ul>
                 </div>
                 <div className="footer-social-media-wrapper">

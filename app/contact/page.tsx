@@ -44,15 +44,17 @@ export default function ContactPage() {
           <div className="w-container">
             <div className="banner-wrap">
               <h1 data-fade className="heading-two text-white">Contact Us</h1>
-              <p data-fade className="section-content text-white indent-70">
-                Tell us about your rooftop or utility-scale solar requirement — we&apos;ll get back
-                to you with an engineered plan.
-              </p>
+              <div data-fade className="contact-banner-tagline">
+                <p className="section-content text-white">
+                  Tell us about your rooftop or utility-scale solar requirement — we&apos;ll get
+                  back to you with an engineered plan.
+                </p>
+              </div>
             </div>
           </div>
           <div className="banner-img-wrap">
             <Image
-              src="/images/solar-4.avif"
+              src="/images/solar-3.avif"
               alt="Contact us"
               width={1400}
               height={500}

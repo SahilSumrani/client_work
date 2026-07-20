@@ -11,7 +11,9 @@ import { useFadeIn } from "@/components/useFadeIn";
 
 // Honest, defensible figures for a newly-launched EPC startup — these reflect
 // real service promises (already stated on the site), not fabricated counts.
-const GUARANTEE_YEARS = 20; // rendered as "20 yr"
+// NOTE: the guarantee term conflicts with the FAQ (which states 3 years,
+// renewable). Confirm the actual figure with the client before shipping.
+const GUARANTEE_YEARS = 25; // rendered as "25 yr"
 const ESG_COMPLIANCE = 100; // rendered as "100%"
 
 /* ------------------------------------------------------------------ */
@@ -92,8 +94,8 @@ export default function WhyChooseUs() {
     <section ref={ref} className="choose-area">
       <div className="w-layout-blockcontainer container w-container">
         <div className="choose-top">
-          <div data-fade className="breadcrumbs">
-            Why choose us
+          <div data-fade className="about-us-subtitle-wrapper">
+            <div className="about-us-subtitle">Why choose us</div>
           </div>
           <h2 data-fade className="heading-five">
             Creating a sustainable world is at the heart of DYU Solar&rsquo;s mission
@@ -124,11 +126,11 @@ export default function WhyChooseUs() {
               </div>
               <div className="choose-content-wrap">
                 <div className="choose-content">
-                  <h3 className="heading-md">Maintenance guarantee</h3>
+                  <h3 className="heading-md">25 Year Performance Guarantee</h3>
                   <p className="section-content pt-10">
-                    Every rooftop and industrial install is backed by a 20-year
-                    O&amp;M and performance guarantee — your yield, protected for
-                    the life of the plant.
+                    Every rooftop and industrial install is backed by a 25-year
+                    performance guarantee — your yield, protected for the life of
+                    the plant.
                   </p>
                 </div>
 

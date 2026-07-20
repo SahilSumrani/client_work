@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useFadeIn } from "@/components/useFadeIn";
 
 export default function Hero() {
@@ -36,24 +37,24 @@ export default function Hero() {
           <div className="hero-right">
             <div className="count-wrap">
               <p data-fade className="count-text">
-                Engineering · Procurement · Construction
+                Solar EPC: PPC-compliant, Tier-1 OEM monitored
+              </p>
+              <p data-fade className="count-text">
+                Engineering-Procurement-Construction
               </p>
             </div>
           </div>
         </div>
       </div>
       <div className="hero-overlay" />
-      <video
-        className="hero-video"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster="/videos/hero-video-poster.jpg"
-      >
-        <source src="/videos/hero-video.webm" type="video/webm" />
-        <source src="/videos/hero-video.mp4" type="video/mp4" />
-      </video>
+      <Image
+        src="/images/solar-1.avif"
+        alt="Solar installation"
+        fill
+        priority
+        sizes="100vw"
+        className="hero-video object-cover"
+      />
     </section>
   );
 }

@@ -102,31 +102,13 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div data-fade className="about-banner-button-wrapper">
-                  <a href="/contact" className="primary-button w-inline-block">
-                    <div className="primary-button-text-wrapper">
-                      <div className="primary-button-text top">More About Us</div>
-                      <div className="primary-button-text bottom">More About Us</div>
-                    </div>
-                    <div className="primary-button-arrow-wrapper">
-                      <img
-                        src="/images/primary-button-arrow.svg"
-                        alt=""
-                        className="primary-button-arrow top"
-                      />
-                      <img
-                        src="/images/primary-button-arrow.svg"
-                        alt=""
-                        className="primary-button-arrow bottom"
-                      />
-                    </div>
-                  </a>
                 </div>
               </div>
               <div className="about-banner-image-wrapper">
                 <div className="about-banner-left-image-wrap">
                   <img
-                    src="/images/about-banner-left.jpg"
-                    alt="About Banner Left Image"
+                    src="/images/solar-1.avif"
+                    alt="Residential Rooftop Solar"
                     className="about-banner-image"
                   />
                   <div className="banner-image-shape left" />
@@ -134,8 +116,8 @@ export default function AboutPage() {
                 </div>
                 <div className="about-banner-right-image-wrap">
                   <img
-                    src="/images/about-banner-right.jpg"
-                    alt="About Banner Right Image"
+                    src="/images/solar-2.avif"
+                    alt="Commercial Rooftop Solar"
                     className="about-banner-image"
                   />
                   <div className="banner-image-shape left" />
@@ -166,8 +148,8 @@ export default function AboutPage() {
                   <div className="vision-left-content">
                     <div className="green-energy-card">
                       <img
-                        src="/images/about-green-energy.jpg"
-                        alt="Green Energy Card Bg"
+                        src="/images/solar-3.avif"
+                        alt="Industrial Solar Installations"
                         className="green-energy-card-image"
                       />
                       <div className="green-energy-card-typography">
@@ -179,8 +161,8 @@ export default function AboutPage() {
                       <div className="w-layout-grid reduction-card-grid">
                         <div className="growth-card">
                           <img
-                            src="/images/about-empower.jpg"
-                            alt=""
+                            src="/images/solar-4.avif"
+                            alt="Ground-Mounted Solar Plant"
                             className="growth-card-image"
                           />
                           <div className="growth-card-typography">
@@ -201,8 +183,8 @@ export default function AboutPage() {
                   </div>
                   <div className="vision-right-content">
                     <img
-                      src="/images/about-empower.jpg"
-                      alt="How It Work Image"
+                      src="/images/solar-img.avif"
+                      alt="Agrivoltaics (Agri-PV)"
                       className="empower-card-image"
                     />
                     <div className="empower-typography">
@@ -243,8 +225,8 @@ export default function AboutPage() {
               </div>
               <div className="how-it-work-image-wrapper">
                 <img
-                  src="/images/about-how-it-works.jpg"
-                  alt="How It Work Image"
+                  src="/images/solar-2.avif"
+                  alt="Floating Solar (Floatovoltaics)"
                   className="how-it-work-image"
                 />
               </div>
