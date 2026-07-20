@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * The Webflow design system lives in ./webflow.css (imported first in layout.tsx).
+ * next/font exposes the loaded fonts as --font-body / --font-heading on <html>.
+ * Bridge them into the variable names the Webflow CSS expects so the optimized
+ * font files are actually used instead of a generic sans-serif fallback.
+ */
+:root {
+  --_font-family---body-font: var(--font-body), sans-serif;
+  --_font-family---heading-font: var(--font-heading), sans-serif;
+}
+
+/* Keep the Webflow .body base typography/color as the source of truth. */
+body.body {
+  margin: 0;
+}
+
+/*
+ * The Webflow counter uses .counter-inner (height:90px; overflow:hidden) to mask
+ * a .counter-number that stacks every digit 0-9 via <br/>. Each digit must sit on
+ * its own line so the roll animation reveals one at a time.
+ */
+.counter-number {
+  display: block;
+  white-space: nowrap;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/*
+ * Scroll-reveal fade for [data-fade] elements. The base state is
+ * hidden/shifted; adding .is-visible (done by the useFadeIn hook)
+ * transitions them in. Uses CSS transitions so it works without
+ * depending on GSAP's animation ticker.
+ */
+[data-fade] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+[data-fade].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-fade] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/*
+ * Animated vertical divider ("daag") in the Why Choose Us section.
+ * The line draws itself in from the center outward when the section
+ * scrolls into view. The .is-visible class is added by useFadeIn
+ * (the same hook that reveals [data-fade] elements), so it triggers
+ * together with the rest of the section's reveal.
+ */
+[data-line] {
+  position: relative;
+  overflow: hidden;
+}
+
+[data-line]::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleY(0);
+  width: 1px;
+  height: 100%;
+  background-image: linear-gradient(#f5f5f500, #333 46%, #f5f5f500);
+  transform-origin: center;
+  transition: transform 1s ease 0.25s;
+  will-change: transform;
+}
+
+[data-line].is-visible::after {
+  transform: translate(-50%, -50%) scaleY(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-line]::after {
+    transform: translate(-50%, -50%) scaleY(1);
+    transition: none;
+  }
+}
