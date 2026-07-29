@@ -51,7 +51,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -80,7 +80,7 @@ export default function StatsBar() {
           transition={
             reduceMotion
               ? { duration: 0 }
-              : { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+              : { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
           }
           className="mx-auto max-w-[760px] text-center"
         >
