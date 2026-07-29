@@ -17,41 +17,53 @@ const SERVICES_DATA: Record<string, {
   img: string;
   gallery: string[];
 }> = {
-  "end-to-end-epc": {
-    title: "End-to-End Solar EPC",
-    desc: "End-to-end Solar EPC services for both rooftop residential solar setup and Industrial Solar Power plant setup, including 20 years of Maintenance guarantees.",
-    img: "/images/solar-4.avif",
-    gallery: ["/images/solar-1.avif", "/images/solar-2.avif", "/images/solar-3.avif"],
+  "ci-rooftop-solar": {
+    title: "C&I Rooftop Solar",
+    desc: "Turnkey rooftop solar solutions for factories, warehouses, commercial complexes, and institutions to cut grid power tariffs and lower operational costs.",
+    img: "/images/rooftop-ci-solar.jpg",
+    gallery: ["/images/rooftop-ci-solar.jpg", "/images/site-engineers.jpg", "/images/scada-monitoring.jpg"],
   },
-  "site-assessment": {
-    title: "Site Assessment & Engineering",
-    desc: "Site assessments, load-bearing analysis, shadow studies, structural stability checks and electrical grid layout — every kilowatt engineered before ground breaks.",
-    img: "/images/solar-3.avif",
-    gallery: ["/images/solar-4.avif", "/images/solar-1.avif", "/images/solar-2.avif"],
+  "utility-scale-ground-mounted": {
+    title: "Utility-Scale Ground-Mounted Solar",
+    desc: "High-yield ground-mounted solar power plants engineered for megawatt-scale power generation with optimized land footprint and high PR (Performance Ratio).",
+    img: "/images/utility-scale-solar.jpg",
+    gallery: ["/images/utility-scale-solar.jpg", "/images/solar-trackers.jpg", "/images/scada-monitoring.jpg"],
   },
-  "tier-1-oem": {
-    title: "Tier-1 OEM Supply Chain",
-    desc: "Direct supply-chain access to Tier-1 OEMs.",
-    img: "/images/solar-1.avif",
-    gallery: ["/images/solar-2.avif", "/images/solar-3.avif", "/images/solar-4.avif"],
+  "open-access-solar": {
+    title: "Open Access Solar",
+    desc: "Group captive and third-party open access solar model enabling bulk power consumers to source low-tariff solar energy over state grid networks.",
+    img: "/images/open-access-solar.jpg",
+    gallery: ["/images/open-access-solar.jpg", "/images/utility-scale-solar.jpg", "/images/scada-monitoring.jpg"],
   },
-  "topcon-modules": {
-    title: "TOPCon N-Type Modules",
-    desc: "Prioritising TOPCon N-Type modules for their superior efficiency, thermal resilience and long-term yield.",
-    img: "/images/solar-2.avif",
-    gallery: ["/images/solar-1.avif", "/images/solar-3.avif", "/images/solar-4.avif"],
+  "floating-canal-top-solar": {
+    title: "Floating (FSPV) & Canal-Top Solar",
+    desc: "Innovative solar arrays mounted on water reservoirs or irrigation canals, preserving valuable land assets while benefiting from natural evaporative cooling.",
+    img: "/images/floating-solar.jpg",
+    gallery: ["/images/floating-solar.jpg", "/images/utility-scale-solar.jpg", "/images/site-engineers.jpg"],
   },
-  "epc-construction": {
-    title: "EPC Construction & Execution",
-    desc: "Mechanical assembly, structural mounting, electrical stringing, grid synchronization — executed under strict safety protocols and timelines.",
-    img: "/images/solar-3.avif",
-    gallery: ["/images/solar-4.avif", "/images/solar-1.avif", "/images/solar-2.avif"],
+  "solar-trackers-bifacial": {
+    title: "Solar Trackers & Bifacial Optimisation",
+    desc: "Single-axis solar trackers paired with bifacial TOPCon/Mono PERC modules to boost daily power yield by up to 25% over fixed-tilt systems.",
+    img: "/images/solar-trackers.jpg",
+    gallery: ["/images/solar-trackers.jpg", "/images/utility-scale-solar.jpg", "/images/scada-monitoring.jpg"],
   },
-  "om-scada": {
-    title: "O&M with SCADA Monitoring",
-    desc: "5+ years of continuous O&M with SCADA-based asset monitoring, performance-ratio protection and technical telemetry.",
-    img: "/images/solar-4.avif",
-    gallery: ["/images/solar-1.avif", "/images/solar-2.avif", "/images/solar-3.avif"],
+  "monitoring-scada-om": {
+    title: "Monitoring/SCADA & O&M",
+    desc: "5-Year full-lifecycle Operations & Maintenance backed by continuous SCADA telemetry, automated fault diagnosis, and performance guarantee protection.",
+    img: "/images/scada-monitoring.jpg",
+    gallery: ["/images/scada-monitoring.jpg", "/images/site-engineers.jpg", "/images/rooftop-ci-solar.jpg"],
+  },
+  "site-feasibility-engineering": {
+    title: "Site Feasibility & Engineering Consulting",
+    desc: "Precision shadow analysis, structural load-bearing checks, electrical single-line diagrams, and yield forecasting engineered before procurement.",
+    img: "/images/site-engineers.jpg",
+    gallery: ["/images/site-engineers.jpg", "/images/subsidy-compliance.jpg", "/images/rooftop-ci-solar.jpg"],
+  },
+  "subsidy-compliance-assistance": {
+    title: "Government Subsidy & Compliance Assistance",
+    desc: "Full guidance through PM Surya Ghar subsidies, state discom net-metering approvals, MNRE ALMM list compliance, and statutory clearances.",
+    img: "/images/subsidy-compliance.jpg",
+    gallery: ["/images/subsidy-compliance.jpg", "/images/site-engineers.jpg", "/images/rooftop-ci-solar.jpg"],
   },
 };
 
@@ -93,51 +105,51 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       <Header />
       <main className="main-wrap">
         {/* Service Hero Banner */}
-        <section className="service-banner relative h-500 overflow-hidden flex items-center">
+        <section className="service-banner relative min-h-[400px] flex items-center bg-navy py-16">
           <div className="w-container relative z-10">
-            <div className="banner-wrap">
-              <h1 data-fade className="heading-two text-white">
+            <div className="banner-wrap max-w-3xl">
+              <h1 data-fade className="heading-two text-white text-3xl md:text-5xl font-extrabold mb-4">
                 {service.title}
               </h1>
-              <p data-fade className="section-content text-white indent-70">
+              <p data-fade className="section-content text-gray-200 text-base md:text-lg">
                 {service.desc}
               </p>
             </div>
           </div>
-          <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 w-full h-full z-0">
             <Image
               src={service.img}
               alt={service.title}
               fill
-              className="object-cover w-full h-full filter brightness-50"
+              className="object-cover w-full h-full filter brightness-40 opacity-40"
             />
           </div>
-          <div className="section-overlay absolute inset-0 bg-black/30 pointer-events-none" />
         </section>
 
         {/* Service Detail Area */}
-        <section className="service-detail-area">
+        <section className="service-detail-area py-16 bg-white">
           <div className="w-container">
-            <div className="service-detail-content">
-              <div data-fade className="rich-text w-richtext">
-                <h2>About this service</h2>
-                <p>{service.desc}</p>
-                <p>
+            <div className="service-detail-content max-w-4xl space-y-6">
+              <div data-fade className="rich-text">
+                <h2 className="text-2xl font-bold text-navy mb-4">Scope of Work &amp; Delivery Standards</h2>
+                <p className="text-gray-700 leading-relaxed text-base mb-4">{service.desc}</p>
+                <p className="text-gray-700 leading-relaxed text-base">
                   As an upcoming Solar EPC provider, DYU Solar LLP delivers every engagement with
-                  ESG-compliant practices, safety-first execution, Tier-1 OEM sourcing and
-                  SCADA-based monitoring — engineered for government-tender credibility.
+                  ESG-compliant practices, safety-first execution, Tier-1 OEM sourcing, 5-Year O&amp;M guarantees, and
+                  SCADA-based monitoring — engineered for government-tender credibility and maximum financial yield.
                 </p>
               </div>
             </div>
 
             {/* Gallery */}
-            <div data-fade className="service-gallery-wrap mt-60">
-              <div role="list" className="service-gallery-list grid grid-cols-1 md:grid-cols-3 gap-24">
+            <div data-fade className="service-gallery-wrap mt-12">
+              <h3 className="text-xl font-bold text-navy mb-6">Technical Execution Gallery</h3>
+              <div role="list" className="service-gallery-list grid grid-cols-1 md:grid-cols-3 gap-6">
                 {service.gallery.map((gImg, idx) => (
-                  <div key={idx} className="service-gallery-item rounded-16 overflow-hidden h-300 relative">
+                  <div key={idx} className="service-gallery-item rounded-2xl overflow-hidden h-64 relative border border-gray-200 shadow-sm">
                     <Image
                       src={gImg}
-                      alt="Service Detail Gallery"
+                      alt={`${service.title} Technical Installation`}
                       fill
                       className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                     />

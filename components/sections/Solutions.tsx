@@ -2,25 +2,37 @@
 
 import Image from "next/image";
 import { useFadeIn } from "@/components/useFadeIn";
+import { ArrowRightIcon } from "@/components/ui/SolarIcons";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
 const CARDS = [
   {
-    icon: "/images/solution-icon-1.svg",
-    label: "Ground-Mounted Solar",
-    title: "Utility-Scale Solar Parks",
-    text: "Utility-scale ground-mounted installations using MonoPERC and TOPCon halfcut bifacial modules, engineered for maximum long-term yield.",
+    title: "C&I Rooftop Solar",
+    text: "On-grid, net-metered installations for factories, warehouses and offices — with hybrid battery options available.",
+    href: "/service/ci-rooftop-solar",
+    image: "/images/about-journey-3.jpg",
+    tag: "Rooftop · Net-Metering",
   },
   {
-    icon: "/images/solution-icon-2.svg",
-    label: "Rooftop Installations",
-    title: "Rooftop Residential & Industrial",
-    text: "End-to-end rooftop EPC for residential and industrial sites, backed by a 20-year maintenance guarantee.",
+    title: "Utility-Scale Ground-Mounted",
+    text: "Large-format solar parks optimised for grid supply with high Performance Ratio and Tier-1 ALMM modules.",
+    href: "/service/utility-scale-ground-mounted",
+    image: "/images/solar-4.avif",
+    tag: "MW-Scale · Grid Sync",
   },
   {
-    icon: "/images/solution-icon-3.svg",
-    label: "O&M & Monitoring",
-    title: "O&M & Asset Monitoring",
-    text: "SCADA-based continuous monitoring and performance-ratio protection across the full plant lifecycle.",
+    title: "Open Access Solar",
+    text: "Decentralised generation sold directly to commercial and industrial consumers through open-access frameworks.",
+    href: "/service/open-access-solar",
+    image: "/images/about-journey-2.jpg",
+    tag: "Group Captive · PPA",
+  },
+  {
+    title: "Monitoring & O&M",
+    text: "SCADA-based telemetry, automated fault alerts, and performance-ratio protection for up to 5 years.",
+    href: "/service/monitoring-scada-om",
+    image: "/images/scada-monitoring.jpg",
+    tag: "SCADA · 5-Year O&M",
   },
 ];
 
@@ -28,60 +40,58 @@ export default function Solutions() {
   const ref = useFadeIn<HTMLElement>();
 
   return (
-    <section ref={ref} className="solution-area">
+    <section ref={ref} className="py-section-y bg-white">
       <div className="w-layout-blockcontainer container w-container">
-        <div className="solution-top">
-          <h2 data-w-id="76a0418e-c45f-a5b1-9843-df1504fa69f0" data-fade className="heading-three text-white">
-            Solar EPC solutions built for scale
-          </h2>
-          <div id="w-node-_099f9053-2d05-cb60-4d7d-d6161ef8d604-2f73c7cf" data-w-id="099f9053-2d05-cb60-4d7d-d6161ef8d604" data-fade className="solution-top-right">
-            <p className="section-content text-white">
-              From rooftop residential to utility-scale ground-mounted plants — engineered,
-              procured, and constructed to perform.
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-block-y" data-fade>
+          <div className="max-w-2xl space-y-4">
+            <span className="inline-flex text-[11px] font-extrabold uppercase tracking-[0.2em] text-solar-gold bg-solar-gold/10 px-3.5 py-1.5 rounded-full">
+              Solar Solutions
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-navy tracking-tight leading-tight">
+              Solar EPC solutions for a greener tomorrow
+            </h2>
+            <p className="text-sm md:text-base text-body/70 max-w-lg leading-relaxed">
+              From commercial rooftop systems to megawatt ground-mounted plants — engineered,
+              procured, and constructed to deliver maximum ROI.
             </p>
-            <a href="/contact" className="btn-primary w-inline-block">
-              <div className="btn-primary-text">Get started</div>
-            </a>
           </div>
+          <PrimaryButton href="/service" variant="navy">
+            Explore All Services
+          </PrimaryButton>
         </div>
-        <div className="solution-wrap">
-          {CARDS.map((card, i) => (
-            <div
-              key={card.title}
-              data-fade
-              style={{ transitionDelay: `${i * 0.12}s` }}
-              className={`solution-card ${i === 0 ? "_1st" : i === CARDS.length - 1 ? "last" : ""}`}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-grid" data-fade>
+          {CARDS.map((card) => (
+            <a
+              key={card.href}
+              href={card.href}
+              className="group relative block overflow-hidden rounded-[28px] bg-navy min-h-[320px] sm:min-h-[360px] shadow-solar-md"
             >
-              <span className="solution-icon-wrap">
-                <Image
-                  src={card.icon}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="solution-icon"
-                />
-                <Image
-                  src={card.icon.replace(".svg", "-gold.svg")}
-                  alt=""
-                  width={48}
-                  height={48}
-                  className="solution-icon-gold"
-                />
-              </span>
-              <p className="solution-label">{card.label}</p>
-              <h3 className="solution-title">{card.title}</h3>
-              <p className="section-content">{card.text}</p>
-              <span className="solution-arrow" aria-hidden="true">
-                <Image src="/images/arrow-right.svg" alt="" width={20} height={20} className="solution-arrow-icon" />
-              </span>
-            </div>
+              <Image
+                src={card.image}
+                alt={card.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/75 to-navy/25" />
+              <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end gap-3.5">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-solar-gold">
+                  {card.tag}
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug">{card.title}</h3>
+                <p className="text-sm leading-relaxed max-w-md m-0" style={{ color: "rgba(255,255,255,0.88)" }}>
+                  {card.text}
+                </p>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-solar-gold pt-1">
+                  Explore solution
+                  <ArrowRightIcon className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
           ))}
         </div>
       </div>
-      <div className="section-overlay" />
-      <video className="solution-video" autoPlay loop muted playsInline poster="/videos/solar-poster.jpg">
-        <source src="/videos/solar-transcode.mp4" type="video/mp4" />
-      </video>
     </section>
   );
 }

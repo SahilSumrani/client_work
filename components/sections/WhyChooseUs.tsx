@@ -1,172 +1,88 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
 import { useFadeIn } from "@/components/useFadeIn";
+import PrimaryButton from "@/components/ui/PrimaryButton";
 
-/* ------------------------------------------------------------------ */
-/*  Data                                                               */
-/* ------------------------------------------------------------------ */
+/**
+ * Blueprint §4.3 condensed to 3 pillars — unique images (no windmills).
+ */
+const PILLARS = [
+  {
+    title: "Single-window EPC",
+    text: "One accountable partner from design through 5-year O&M — no vendor handoffs.",
+    image: "/images/about-journey-1.jpg",
+    alt: "DYU Solar engineers reviewing a solar project on site",
+  },
+  {
+    title: "Flexible commercial models",
+    text: "CAPEX ownership or zero-upfront RESCO / PPA structures for C&I clients.",
+    image: "/images/subsidy-compliance.jpg",
+    alt: "Commercial planning session for solar financing models",
+  },
+  {
+    title: "Certified & compliant",
+    text: "Tier-1 Mono PERC and TOPCon modules with IEC 61215 / 61730 / 62109 and ALMM (MNRE) listings for tender confidence.",
+    image: "/images/rooftop-ci-solar.jpg",
+    alt: "Tier-1 solar modules on a DYU Solar array",
+  },
+];
 
-// Honest, defensible figures for a newly-launched EPC startup — these reflect
-// real service promises (already stated on the site), not fabricated counts.
-// NOTE: the guarantee term conflicts with the FAQ (which states 3 years,
-// renewable). Confirm the actual figure with the client before shipping.
-const GUARANTEE_YEARS = 25; // rendered as "25 yr"
-const ESG_COMPLIANCE = 100; // rendered as "100%"
-
-/* ------------------------------------------------------------------ */
-/*  Count-up number                                                   */
-/* ------------------------------------------------------------------ */
-
-function CountUp({ target, suffix }: { target: number; suffix: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) {
-      el.textContent = target + suffix;
-      return;
-    }
-
-    const obj = { val: 0 };
-    let tween: gsap.core.Tween | null = null;
-    let done = false;
-
-    const run = () => {
-      if (done) return;
-      done = true;
-      tween = gsap.to(obj, {
-        val: target,
-        duration: 1.4,
-        ease: "power2.out",
-        onUpdate: () => {
-          el.textContent = Math.round(obj.val) + suffix;
-        },
-      });
-    };
-
-    // Reveal when the number scrolls into view. IntersectionObserver is far
-    // more reliable than ScrollTrigger across environments (including
-    // headless/preview), so the counter can never get stuck at "0".
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          window.clearTimeout(fallback);
-          run();
-          io.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    io.observe(el);
-
-    // Safety net: if the observer never fires (e.g. element already fully in
-    // view at mount), still show the real value shortly after load.
-    const fallback = window.setTimeout(run, 1200);
-
-    return () => {
-      window.clearTimeout(fallback);
-      io.disconnect();
-      tween?.kill();
-    };
-  }, [target, suffix]);
-
-  return (
-    <div ref={ref} className="counter-number">
-      0{suffix}
-    </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/*  Section                                                            */
-/* ------------------------------------------------------------------ */
-
+/**
+ * Blueprint §4.3 Why Choose — 3-up photo cards, condensed.
+ */
 export default function WhyChooseUs() {
   const ref = useFadeIn<HTMLElement>();
 
   return (
-    <section ref={ref} className="choose-area">
+    <section ref={ref} className="py-section-y bg-white">
       <div className="w-layout-blockcontainer container w-container">
-        <div className="choose-top">
-          <div data-fade className="about-us-subtitle-wrapper">
-            <div className="about-us-subtitle">Why choose us</div>
+        <div
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-block-y max-w-5xl"
+          data-fade
+        >
+          <div className="space-y-5 max-w-2xl">
+            <div className="section-badge-hulax">
+              <p className="text-[13px] font-medium text-navy/70 m-0">Why Choose DYU Solar</p>
+            </div>
+            <h2 className="font-heading text-3xl sm:text-4xl lg:text-[2.85rem] font-medium text-navy leading-[1.2] tracking-[-0.04em] m-0">
+              Creating a sustainable world through engineering excellence
+            </h2>
+            <p className="text-sm sm:text-base text-navy/65 leading-[1.75] max-w-lg m-0">
+              Building the Future with Trust — institutional EPC discipline for commercial,
+              industrial, and utility-scale solar across Delhi/NCR.
+            </p>
           </div>
-          <h2 data-fade className="heading-five">
-            Creating a sustainable world is at the heart of DYU Solar&rsquo;s mission
-          </h2>
+          <PrimaryButton href="/contact" variant="navy">
+            Get In Touch
+          </PrimaryButton>
         </div>
 
-        <div className="choose-wrap">
-          {/* ---------------- Left card ---------------- */}
-          <div data-fade className="choose-left">
-            <div className="choose-inner">
-              <Image
-                src="/images/choose-1.avif"
-                alt="Solar installation"
-                width={400}
-                height={300}
-                className="choose-img"
-              />
-              <a href="/contact" className="btn-secondary">
-                <div>Get in touch</div>
-              </a>
-            </div>
-
-            <div className="choose-border" />
-
-            <div className="choose-inner-right">
-              <div className="counter">
-                <CountUp target={GUARANTEE_YEARS} suffix=" yr" />
-              </div>
-              <div className="choose-content-wrap">
-                <div className="choose-content">
-                  <h3 className="heading-md">25 Year Performance Guarantee</h3>
-                  <p className="section-content pt-10">
-                    Every rooftop and industrial install is backed by a 25-year
-                    performance guarantee — your yield, protected for the life of
-                    the plant.
-                  </p>
-                </div>
-
-                {/* Company logo on the white card. */}
-                <div className="choose-logo-wrap">
-                  <Image
-                    src="/images/company-logo.png"
-                    alt="DYU Solar LLP"
-                    width={140}
-                    height={76}
-                    className="choose-logo"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ---------------- Right (dark) card ---------------- */}
-          <div data-fade className="choose-right">
-            <video
-              className="choose-video"
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster="/videos/solar-tem-poster.jpg"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6" data-fade>
+          {PILLARS.map((pillar) => (
+            <article
+              key={pillar.title}
+              className="group flex flex-col overflow-hidden rounded-[28px] bg-[#F7F7F2]"
             >
-              <source src="/videos/solar-tem-transcode.mp4" type="video/mp4" />
-            </video>
-            <div className="choose-detail">
-              <div className="counter counter-white">
-                <CountUp target={ESG_COMPLIANCE} suffix="%" />
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={pillar.image}
+                  alt={pillar.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent opacity-80" />
               </div>
-              <p className="section-content text-white">ESG-compliant engineering</p>
-            </div>
-          </div>
+              <div className="flex flex-col gap-2.5 p-6 sm:p-7 flex-1">
+                <h3 className="font-heading text-xl sm:text-[1.35rem] font-medium text-navy m-0 tracking-tight leading-snug">
+                  {pillar.title}
+                </h3>
+                <p className="text-sm text-navy/65 leading-[1.7] m-0">{pillar.text}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

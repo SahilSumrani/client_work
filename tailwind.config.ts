@@ -6,24 +6,23 @@ const config: Config = {
     "./components/**/*.{ts,tsx}",
   ],
   corePlugins: {
-    // The Webflow stylesheet owns `.container` (max-width: 1312px).
-    // Tailwind's built-in `.container` utility (responsive max-width) would
-    // override it and break the layout, so disable it.
     container: false,
   },
   theme: {
     extend: {
       colors: {
+        navy: {
+          DEFAULT: "#1B365D",
+          light: "#24477A",
+          dark: "#122543",
+        },
+        "solar-gold": {
+          DEFAULT: "#E5A93C",
+          light: "#FFD700",
+          dark: "#C68B25",
+        },
         white: { 100: "#ffffff", 200: "#f5f5f5", 300: "#e9e9e9", 400: "#eaeaea" },
         dark: { 100: "#010101", 200: "rgba(255,255,255,0.13)" },
-        gray: {
-          100: "#4a4a4a",
-          200: "#6a6a6a",
-          300: "#c8c8c8",
-          400: "rgba(106,106,106,0.10)",
-          500: "rgba(106,106,106,0.44)",
-          600: "#d5d5d6",
-        },
         body: { DEFAULT: "#333333" },
       },
       borderRadius: {
@@ -39,6 +38,13 @@ const config: Config = {
         heading: ["var(--font-heading)", "sans-serif"],
       },
       spacing: {
+        // Site-wide Spacing System Tokens
+        "section-y": "var(--space-section-y)",
+        "block-y": "var(--space-block-y)",
+        "card-pad": "var(--space-card-pad)",
+        "grid-gap": "var(--space-grid-gap)",
+        "heading-gap": "var(--space-heading-gap)",
+        "inline-gap": "var(--space-inline)",
         10: "10px",
         16: "16px",
         20: "20px",

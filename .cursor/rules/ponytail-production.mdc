@@ -1,0 +1,38 @@
+---
+description: How ponytail applies to this Next.js production marketing site (DYU Solar).
+alwaysApply: true
+---
+
+# Ponytail on this production site
+
+Ponytail is an **agent coding ruleset**, not an npm/runtime dependency. Do not install it into `package.json`, PostCSS, or the Next build. Production impact = smaller, safer diffs agents ship.
+
+## Stack constraints (do not fight them)
+
+- Next.js 14 App Router + React 18 + Tailwind 3.4 + existing Framer Motion / GSAP / Lucide only when already used nearby.
+- Prefer reuse: `components/ui/*`, `components/sections/*`, `components/layout/*`, CSS tokens in `app/globals.css`.
+- No new UI libraries, icon packs, date pickers, or CSS frameworks for tasks this stack already covers.
+
+## Ladder examples for this repo
+
+```tsx
+// ❌ BAD — new dep + wrapper for a simple control
+import DatePicker from "react-datepicker";
+
+// ✅ GOOD — native platform feature (ponytail rung 4)
+<input type="date" className="..." />
+```
+
+```tsx
+// ❌ BAD — new button primitive
+<button className="rounded-full bg-purple-600 ...">Get quote</button>
+
+// ✅ GOOD — reuse installed pattern
+import PrimaryButton from "@/components/ui/PrimaryButton";
+```
+
+## Production hygiene
+
+- Ship the shortest diff that preserves a11y, contact/API validation, and existing brand tokens (`navy`, `solar-gold`, spacing CSS vars).
+- Do not redesign pages or “modernize” Tailwind when fixing bugs.
+- Mark intentional shortcuts with `// ponytail: <ceiling> → <upgrade>`.
