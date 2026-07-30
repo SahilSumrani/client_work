@@ -19,7 +19,7 @@ const VARIANTS = {
     src: "/images/dyu-logo-mark.png?v=1",
     width: 342,
     height: 245,
-    frameClassName: "h-[60px] w-[86px] sm:h-[68px] sm:w-[98px]",
+    frameClassName: "h-[72px] w-[100px] sm:h-[88px] sm:w-[122px] lg:h-[104px] lg:w-[146px]",
     imageClassName: "h-full w-full object-contain object-center",
   },
   drawer: {

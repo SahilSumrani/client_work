@@ -7957,7 +7957,7 @@ blockquote {
 
 /* Contact hero tagline box — more breathing room, not flush to the edge. */
 .contact-banner-tagline {
-    max-width: 420px;
+    max-width: min(420px, 100%);
     padding: 24px 28px;
     border-radius: var(--_sizes---radius--radius-20);
     background-color: rgba(3, 19, 45, 0.55);
@@ -7967,6 +7967,12 @@ blockquote {
 
 .contact-banner-tagline .section-content {
     margin-bottom: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .contact-banner-tagline {
+        padding: 18px 20px;
+    }
 }
 
 /* Service page interactive micro-interactions. */
